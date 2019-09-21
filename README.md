@@ -1,10 +1,10 @@
 # Companies
 
-![npm license](https://img.shields.io/npm/l/@enso-ui/tutorials.svg) 
-![npm download](https://img.shields.io/npm/dm/@enso-ui/tutorials.svg) 
-![GitHub top language](https://img.shields.io/github/languages/top/enso-ui/tutorials.svg) 
-![GitHub issues](https://img.shields.io/github/issues/enso-ui/tutorials.svg) 
-![npm version](https://img.shields.io/npm/v/@enso-ui/tutorials.svg) 
+![npm license](https://img.shields.io/npm/l/@enso-ui/companies.svg) 
+![npm download](https://img.shields.io/npm/dm/@enso-ui/companies.svg) 
+![GitHub top language](https://img.shields.io/github/languages/top/enso-ui/companies.svg) 
+![GitHub issues](https://img.shields.io/github/issues/enso-ui/companies.svg) 
+![npm version](https://img.shields.io/npm/v/@enso-ui/companies.svg) 
 
 ## Usage
 The component cannot be used outside of the Enso ecosystem.
@@ -19,7 +19,7 @@ Check the full documentation at  [docs.laravel-enso.com](https://docs.laravel-en
 
 Install the package:
 ```
-yarn add @enso-ui/tutorials
+yarn add @enso-ui/companies
 ```
 
 ## Contributions
