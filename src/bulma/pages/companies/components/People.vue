@@ -97,7 +97,7 @@
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Modal } from '@enso-ui/bulma';
+import { Modal } from '@enso-ui/modal/bulma';
 import Person from './Person.vue';
 import PersonForm from './PersonForm.vue';
 

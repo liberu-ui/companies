@@ -42,7 +42,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faCheck, faTimes, faEnvelope, faPhone, faInfoCircle, faPencilAlt, faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import { Confirmation } from '@enso-ui/bulma';
+import { Confirmation } from '@enso-ui/confirmation/bulma';
 
 library.add([
     faCheck, faTimes, faEnvelope, faPhone, faInfoCircle, faPencilAlt, faTrashAlt,

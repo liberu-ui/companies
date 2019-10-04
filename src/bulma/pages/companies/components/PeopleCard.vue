@@ -29,7 +29,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faAddressCard, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
     Card, CardHeader, CardRefresh, CardCollapse, CardBadge, CardContent,
-} from '@enso-ui/bulma';
+} from '@enso-ui/card/bulma';
 import People from './People.vue';
 
 library.add(faAddressCard, faPlusSquare);
