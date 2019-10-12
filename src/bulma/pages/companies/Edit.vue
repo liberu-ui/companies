@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import { Tab } from '@enso-ui/bulma';
+import { Tab } from '@enso-ui/tabs/bulma';
 import {
     Accessories, Addresses, Comments, Discussions, Documents,
 } from '@enso-ui/accessories/bulma';
