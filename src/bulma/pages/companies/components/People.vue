@@ -45,25 +45,22 @@
             </slot>
         </div>
         <div class="columns is-multiline has-margin-top-large">
-            <div v-for="(person, index) in filteredPeople"
-                 :key="index"
-                 class="column is-half-tablet">
+            <div class="column is-half-tablet"
+                v-for="(person, index) in filteredPeople"
+                :key="person.id">
                 <person :id="id"
-                     :person="person"
-                     :index="index"
-                     @edit="edit(person)"
-                     @delete="destroy(person, index)"/>
+                    :person="person"
+                    @edit="edit(person)"
+                    @delete="destroy(person, index)"/>
             </div>
-            <person-form :path="path"
-                :company-id="id"
-                @ready="$refs.form.field('company_id').value = id"
-                @close="path = null"
-                @destroy="fetch()"
-                @edit-person="navigateToPerson"
-                @submit="fetch(); path = null"
-                ref="form"
-                 v-if="path"/>
         </div>
+        <person-form :path="path"
+            :company-id="id"
+            @close="path = null"
+            @edit-person="navigateToPerson"
+            @submit="fetch(); path = null"
+            ref="form"
+            v-if="path"/>
         <modal :show="!!deletedPerson"
             @close="deletedPerson = null">
             <div class="box">
@@ -135,7 +132,7 @@ export default {
 
             return query
                 ? this.people.filter(({ name, position }) => name.toLowerCase().indexOf(query) > -1
-                        || position.toLowerCase().indexOf(query) > -1)
+                    || position.toLowerCase().indexOf(query) > -1)
                 : this.people;
         },
         count() {

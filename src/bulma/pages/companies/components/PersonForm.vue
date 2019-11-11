@@ -6,10 +6,11 @@
             v-bind="$attrs"
             disable-state
             v-on="$listeners"
-            ref="form">
-            <template v-slot:actions>
+            @ready="init">
+            <template v-slot:actions-left
+                v-if="id">
                 <a class="button is-warning"
-                    @click="editPerson">
+                    @click="$emit('edit-person', id)">
                     <span class="is-hidden-mobile">
                         {{ i18n('Edit Person') }}
                     </span>
@@ -41,18 +42,14 @@ export default {
         },
     },
 
-    methods: {
-        editPerson() {
-            if (!this.field('id').value) {
-                return;
-            }
+    data: () => ({
+        id: null,
+    }),
 
-            this.$emit('edit-person', this.field('id').value);
-        },
-        field(field) {
-            return this.$refs.form.data
-                ? this.$refs.form.field(field)
-                : null;
+    methods: {
+        init({ form }) {
+            this.id = form.field('id').value;
+            form.field('company_id').value = this.companyId;
         },
     },
 };
