@@ -26,7 +26,7 @@
                         <div class="columns is-centered">
                             <div class="column is-two-thirds">
                                 <addresses :id="companyId"
-                                    type="LaravelEnso\Companies\app\Models\Company"
+                                    type="LaravelEnso\Companies\App\Models\Company"
                                     @update="$set(count, 'Addresses', $refs.addresses.count)"
                                     ref="addresses"/>
                             </div>
@@ -37,7 +37,7 @@
                         <div class="columns is-centered">
                             <div class="column is-two-thirds">
                                 <comments :id="companyId"
-                                    type="LaravelEnso\Companies\app\Models\Company"
+                                    type="LaravelEnso\Companies\App\Models\Company"
                                     @update="$set(count, 'Comments', $refs.comments.count)"
                                     ref="comments"/>
                             </div>
@@ -48,7 +48,7 @@
                         <div class="columns is-centered">
                             <div class="column is-two-thirds">
                                 <discussions :id="companyId"
-                                    type="LaravelEnso\Companies\app\Models\Company"
+                                    type="LaravelEnso\Companies\App\Models\Company"
                                     @update="$set(count, 'Discussions', $refs.discussions.count)"
                                     ref="discussions"/>
                             </div>
@@ -59,7 +59,7 @@
                         <div class="columns is-centered">
                             <div class="column is-two-thirds">
                                 <documents :id="companyId"
-                                    type="LaravelEnso\Companies\app\Models\Company"
+                                    type="LaravelEnso\Companies\App\Models\Company"
                                     @update="$set(count, 'Documents', $refs.documents.count)"
                                     ref="documents"/>
                             </div>
