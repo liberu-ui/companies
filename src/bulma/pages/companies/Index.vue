@@ -1,6 +1,7 @@
 <template>
     <enso-table class="box is-paddingless raises-on-hover"
-        id="companies">
+        id="companies"
+        @clicked="visit">
         <template v-slot:status="{ row }">
             <span class="tag is-table-tag"
                 :class="status(row)">
@@ -24,6 +25,9 @@ export default {
     },
 
     methods: {
+        visit({ row }) {
+            window.open(row.website, '_blank').focus();
+        },
         status({ statusValue }) {
             switch (`${statusValue}`) {
             case this.enums.companyStatuses.Active:
