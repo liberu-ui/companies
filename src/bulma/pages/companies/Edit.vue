@@ -26,42 +26,9 @@
                         <div class="columns is-centered">
                             <div class="column is-two-thirds">
                                 <addresses :id="companyId"
-                                    type="LaravelEnso\Companies\App\Models\Company"
+                                    type="LaravelEnso\Companies\Models\Company"
                                     @update="$set(count, 'Addresses', $refs.addresses.count)"
                                     ref="addresses"/>
-                            </div>
-                        </div>
-                    </tab>
-                    <tab keep-alive
-                        id="Comments">
-                        <div class="columns is-centered">
-                            <div class="column is-two-thirds">
-                                <comments :id="companyId"
-                                    type="LaravelEnso\Companies\App\Models\Company"
-                                    @update="$set(count, 'Comments', $refs.comments.count)"
-                                    ref="comments"/>
-                            </div>
-                        </div>
-                    </tab>
-                    <tab keep-alive
-                        id="Discussions">
-                        <div class="columns is-centered">
-                            <div class="column is-two-thirds">
-                                <discussions :id="companyId"
-                                    type="LaravelEnso\Companies\App\Models\Company"
-                                    @update="$set(count, 'Discussions', $refs.discussions.count)"
-                                    ref="discussions"/>
-                            </div>
-                        </div>
-                    </tab>
-                    <tab keep-alive
-                        id="Documents">
-                        <div class="columns is-centered">
-                            <div class="column is-two-thirds">
-                                <documents :id="companyId"
-                                    type="LaravelEnso\Companies\App\Models\Company"
-                                    @update="$set(count, 'Documents', $refs.documents.count)"
-                                    ref="documents"/>
                             </div>
                         </div>
                     </tab>
@@ -73,9 +40,7 @@
 
 <script>
 import { Tab } from '@enso-ui/tabs/bulma';
-import {
-    Accessories, Addresses, Comments, Discussions, Documents,
-} from '@enso-ui/accessories/bulma';
+import { Accessories, Addresses } from '@enso-ui/bulma';
 import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
 import People from './components/People.vue';
 
@@ -83,15 +48,8 @@ export default {
     name: 'Edit',
 
     components: {
-        EnsoForm,
-        FormField,
-        Accessories,
-        Tab,
-        Addresses,
-        Comments,
-        Discussions,
-        Documents,
-        People,
+        EnsoForm, FormField, Accessories,
+        Tab, Addresses, People,
     },
 
     computed: {
