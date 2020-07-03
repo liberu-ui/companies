@@ -61,8 +61,8 @@
             @submit="fetch(); path = null"
             ref="form"
             v-if="path"/>
-        <modal :show="!!deletedPerson"
-            @close="deletedPerson = null">
+        <modal @close="deletedPerson = null"
+            v-if="!!deletedPerson">
             <div class="box">
                 <h5 class="subtitle is-5">
                     {{ i18n("Do you want to delete the associated person?") }}
@@ -103,7 +103,7 @@ library.add(faPlus, faSync, faSearch);
 export default {
     name: 'People',
 
-    inject: ['canAccess', 'errorHandler', 'i18n', 'route'],
+    inject: ['canAccess', 'errorHandler', 'i18n', 'route', 'toastr'],
 
     components: { Person, PersonForm, Modal },
 
@@ -201,7 +201,7 @@ export default {
                     { person: this.deletedPerson.id }),
             ).then(({ data }) => {
                 this.deletedPerson = null;
-                this.$toastr.success(data.message);
+                this.toastr.success(data.message);
                 this.loading = false;
             }).catch(this.errorHandler);
         },
