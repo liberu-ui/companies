@@ -26,7 +26,7 @@
                         <div class="columns is-centered">
                             <div class="column is-two-thirds">
                                 <addresses :id="companyId"
-                                    type="LaravelEnso\Companies\Models\Company"
+                                    type="company"
                                     @update="$set(count, 'Addresses', $refs.addresses.count)"
                                     ref="addresses"/>
                             </div>
