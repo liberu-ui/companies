@@ -12,16 +12,12 @@
                         <fa icon="pencil-alt"/>
                     </span>
                 </a>
-                <confirmation placement="top"
-                    @show="confirmation = true"
-                    @hide="confirmation = controls = false"
-                    @confirm="$emit('delete')">
-                    <a class="button is-naked is-small">
-                        <span class="icon">
-                            <fa icon="trash-alt"/>
-                        </span>
-                    </a>
-                </confirmation>
+                <a class="button is-naked is-small"
+                    @click="$emit('delete')">
+                    <span class="icon">
+                        <fa icon="trash-alt"/>
+                    </span>
+                </a>
             </span>
         </p>
         <p class="subtitle is-6">
