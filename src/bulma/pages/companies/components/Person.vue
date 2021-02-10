@@ -1,7 +1,7 @@
 <template>
     <div class="box has-background-light raises-on-hover has-padding-large"
         @mouseover="controls = true"
-        @mouseleave="controls = !confirmation ? false : controls">
+        @mouseleave="controls = false">
         <p class="title is-5">
             {{ person.name }}
             <span class="is-pulled-right is-flex"
@@ -38,7 +38,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faCheck, faTimes, faEnvelope, faPhone, faInfoCircle, faPencilAlt, faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import Confirmation from '@enso-ui/confirmation/bulma';
 
 library.add([
     faCheck, faTimes, faEnvelope, faPhone, faInfoCircle, faPencilAlt, faTrashAlt,
@@ -51,8 +50,6 @@ export default {
 
     directives: { tooltip: VTooltip },
 
-    components: { Confirmation },
-
     props: {
         person: {
             type: Object,
@@ -62,7 +59,6 @@ export default {
 
     data: () => ({
         controls: false,
-        confirmation: false,
     }),
 };
 </script>
