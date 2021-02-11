@@ -51,7 +51,7 @@
                 <person :id="id"
                     :person="person"
                     @edit="edit(person)"
-                    @delete="deletedPerson = people[index]"/>
+                    @delete="removedPerson = person"/>
             </div>
         </div>
         <person-form :path="path"
@@ -61,8 +61,9 @@
             @submit="fetch(); path = null"
             ref="form"
             v-if="path"/>
-        <modal @close="deletedPerson = null"
-            v-if="!!deletedPerson">
+        <modal @close="removedPerson = null"
+            class="remove-person"
+            v-if="!!removedPerson">
             <div class="box">
                 <h5 class="subtitle is-5">
                     {{ i18n("Do you want to delete the associated person?") }}
@@ -72,7 +73,7 @@
                     <div class="level-left">
                         <div class="level-item">
                             <button class="button is-outlined"
-                                @click="deletedPerson = null">
+                                @click="removedPerson = null">
                                 {{ i18n('No') }}
                             </button>
                         </div>
@@ -80,14 +81,14 @@
                     <div class="level-right">
                         <div class="level-item">
                             <button class="button is-warning has-margin-left-small"
-                                @click="destroy().then(() => (deletedPerson = null))">
-                                {{ i18n('Remove association') }}
+                                @click="destroy().then(() => (removedPerson = null))">
+                                {{ i18n('Remote person from company') }}
                             </button>
                         </div>
                         <div class="level-item">
                             <button class="button is-danger has-margin-left-small"
                                 @click="destroy().then(destroyPerson)">
-                                {{ i18n('Remove association and person') }}
+                                {{ i18n('Delete person from application') }}
                             </button>
                         </div>
                     </div>
@@ -129,7 +130,7 @@ export default {
         people: [],
         path: null,
         internalQuery: '',
-        deletedPerson: null,
+        removedPerson: null,
     }),
 
     computed: {
@@ -166,8 +167,8 @@ export default {
             )).then(({ data }) => {
                 this.people = data;
                 this.$emit('update');
-                this.loading = false;
-            }).catch(this.errorHandler);
+            }).catch(this.errorHandler)
+                .finally(() => (this.loading = false));
         },
         create() {
             this.path = this.route(
@@ -186,26 +187,26 @@ export default {
 
             return axios.delete(this.route(
                 'administration.companies.people.destroy',
-                { company: this.id, person: this.deletedPerson.id },
+                { company: this.id, person: this.removedPerson.id },
             )).then(() => {
-                const index = this.people.findIndex(({ id }) => id === this.deletedPerson.id);
+                const index = this.people.findIndex(({ id }) => id === this.removedPerson.id);
                 this.people.splice(index, 1);
-                this.$emit('remove', this.deletedPerson.id);
+                this.$emit('remove', this.removedPerson.id);
                 this.$emit('update');
-                this.loading = false;
-            }).catch(this.errorHandler);
+            }).catch(this.errorHandler)
+                .finally(() => (this.loading = false));
         },
         destroyPerson() {
             this.loading = true;
 
             return axios.delete(
-                this.route('administration.people.destroy',
-                    { person: this.deletedPerson.id }),
-            ).then(({ data }) => {
-                this.toastr.success(data.message);
-                this.loading = false;
-            }).catch(this.errorHandler)
-                .finally(() => (this.deletedPerson = null));
+                this.route('administration.people.destroy', { person: this.removedPerson.id }),
+            ).then(({ data: { message } }) => this.toastr.success(message))
+                .catch(this.errorHandler)
+                .finally(() => {
+                    this.loading = false;
+                    this.removedPerson = null;
+                });
         },
         navigateToPerson($event) {
             this.path = null;
@@ -220,3 +221,10 @@ export default {
     },
 };
 </script>
+<style>
+@media screen and (min-width: 1023px) {
+    .remove-person .modal-content {
+        width: 750px;
+    }
+}
+</style>
