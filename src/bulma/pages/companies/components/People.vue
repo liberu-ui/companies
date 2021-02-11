@@ -82,7 +82,7 @@
                         <div class="level-item">
                             <button class="button is-warning has-margin-left-small"
                                 @click="destroy().then(() => (removedPerson = null))">
-                                {{ i18n('Remote person from company') }}
+                                {{ i18n('Remove person from company') }}
                             </button>
                         </div>
                         <div class="level-item">
