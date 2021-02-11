@@ -66,7 +66,7 @@
             v-if="!!removedPerson">
             <div class="box">
                 <h5 class="subtitle is-5">
-                    {{ i18n("Do you want to delete the associated person?") }}
+                    {{ i18n("What would you like to do?") }}
                 </h5>
                 <hr>
                 <div class="level">
@@ -74,7 +74,7 @@
                         <div class="level-item">
                             <button class="button is-outlined"
                                 @click="removedPerson = null">
-                                {{ i18n('No') }}
+                                {{ i18n('Cancel') }}
                             </button>
                         </div>
                     </div>
