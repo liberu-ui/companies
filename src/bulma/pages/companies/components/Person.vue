@@ -1,5 +1,5 @@
 <template>
-    <div class="box has-background-light raises-on-hover has-padding-large"
+    <div class="box has-background-light raises-on-hover p-3"
         @mouseover="controls = true"
         @mouseleave="controls = false">
         <p class="title is-5">

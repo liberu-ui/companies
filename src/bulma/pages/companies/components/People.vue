@@ -32,7 +32,7 @@
                     </span>
                 </p>
                 <p class="control">
-                    <a class="button is-rounded is-small is-bold has-margin-left-medium"
+                    <a class="button is-rounded is-small is-bold ml-2"
                         @click="fetch()">
                         <span>
                             {{ i18n('Reload') }}
@@ -44,7 +44,7 @@
                 </p>
             </slot>
         </div>
-        <div class="columns is-multiline has-margin-top-large">
+        <div class="columns is-multiline mt-3">
             <div class="column is-half-tablet"
                 v-for="(person, index) in filteredPeople"
                 :key="person.id">
@@ -80,13 +80,13 @@
                     </div>
                     <div class="level-right">
                         <div class="level-item">
-                            <button class="button is-warning has-margin-left-small"
+                            <button class="button is-warning ml-1"
                                 @click="destroy().then(() => (removedPerson = null))">
                                 {{ i18n('Remove person from company') }}
                             </button>
                         </div>
                         <div class="level-item">
-                            <button class="button is-danger has-margin-left-small"
+                            <button class="button is-danger ml-1"
                                 @click="destroy().then(destroyPerson)">
                                 {{ i18n('Delete person from application') }}
                             </button>
