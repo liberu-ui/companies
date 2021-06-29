@@ -110,7 +110,7 @@ library.add(faPlus, faSync, faSearch);
 export default {
     name: 'People',
 
-    inject: ['canAccess', 'errorHandler', 'i18n', 'route', 'toastr'],
+    inject: ['canAccess', 'errorHandler', 'i18n', 'route', 'routeErrorHandler', 'toastr'],
 
     components: { Person, PersonForm, Modal },
 
@@ -215,7 +215,7 @@ export default {
                 this.$router.push({
                     name: 'administration.people.edit',
                     params: { person: $event },
-                });
+                }).catch(this.routeErrorHandler);
             });
         },
     },
