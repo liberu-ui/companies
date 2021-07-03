@@ -9,7 +9,7 @@
                 </template>
             </enso-form>
             <accessories>
-                <template slot-scope="{ count }">
+                <template v-slot="{ count }">
                     <tab keep-alive
                         id="People">
                         <div class="columns is-centered">
@@ -48,8 +48,12 @@ export default {
     name: 'Edit',
 
     components: {
-        EnsoForm, FormField, Accessories,
-        Tab, Addresses, People,
+        EnsoForm,
+        FormField,
+        Accessories,
+        Tab,
+        Addresses,
+        People,
     },
 
     computed: {
