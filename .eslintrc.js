@@ -1,8 +1,8 @@
 module.exports = {
-    'root': true,
+    root: true,
     extends: [
         'airbnb-base',
-        'plugin:vue/recommended'
+        'plugin:vue/vue3-recommended',
     ],
     plugins: [
         'vue',
@@ -14,8 +14,7 @@ module.exports = {
     parserOptions: {
         parser: 'babel-eslint',
         sourceType: 'module',
-        'ecmaVersion': 2017,
-        allowImportExportEverywhere: true
+        allowImportExportEverywhere: true,
     },
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -24,21 +23,21 @@ module.exports = {
         'vue/html-indent': 0,
         'vue/attributes-order': 0,
         'no-plusplus': 0,
-        'no-debugger': 0,
         'no-param-reassign': 0,
         'no-mixed-operators': 0,
         'func-names': 0,
         'no-shadow': 0,
+        'vue/multi-word-component-names': 0,
         'vue/max-attributes-per-line': 0,
         'no-return-assign': ['error', 'except-parens'],
         'vue/html-closing-bracket-newline': ['error', {
-            'singleline': 'never',
-            'multiline': 'never'
+            singleline: 'never',
+            multiline: 'never',
         }],
         'vue/html-closing-bracket-spacing': ['error', {
-            'startTag': 'never',
-            'endTag': 'never',
-            'selfClosingTag': 'never'
-        }]
+            startTag: 'never',
+            endTag: 'never',
+            selfClosingTag: 'never',
+        }],
     },
 };
