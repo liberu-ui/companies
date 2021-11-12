@@ -2,13 +2,13 @@
     <card collapsible
         :collapsed="collapsed">
         <card-header class="has-background-light">
-            <template v-slot:title>
+            <template #:title>
                 <span class="icon is-small mr-1">
                     <fa icon="address-card"/>
                 </span>
                 {{ displayTitle }}
             </template>
-            <template v-slot:controls>
+            <template #:controls>
                 <card-refresh @refresh="fetch"/>
                 <card-badge :label="count"/>
                 <card-collapse/>

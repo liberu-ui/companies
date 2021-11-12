@@ -6,7 +6,7 @@
             disable-state
             v-on="$listeners"
             @ready="init">
-            <template v-slot:actions-left
+            <template #:actions-left
                 v-if="id">
                 <a class="button is-warning"
                     @click="$emit('edit-person', id)">

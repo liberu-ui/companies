@@ -3,13 +3,13 @@
         <div class="column is-three-quarters is-full-touch">
             <enso-form class="box has-background-light raises-on-hover"
                 ref="form">
-                <template v-slot:mandatary="props">
+                <template #mandatary="props">
                     <form-field v-bind="props"
                         :pivot-params="pivotParams"/>
                 </template>
             </enso-form>
             <accessories>
-                <template v-slot="{ count }">
+                <template #default="{ count }">
                     <tab keep-alive
                         id="People">
                         <div class="columns is-centered">
@@ -32,6 +32,28 @@
                             </div>
                         </div>
                     </tab>
+                    <tab keep-alive
+                        id="Comments">
+                        <div class="columns is-centered">
+                            <div class="column is-two-thirds">
+                                <comments :id="companyId"
+                                    type="company"
+                                    @update="$set(count, 'Comments', $refs.comments.count)"
+                                    ref="comments"/>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab keep-alive
+                        id="Documents">
+                        <div class="columns is-centered">
+                            <div class="column is-two-thirds">
+                                <documents :id="companyId"
+                                    type="company"
+                                    @update="$set(count, 'Documents', $refs.documents.count)"
+                                    ref="documents"/>
+                            </div>
+                        </div>
+                    </tab>
                 </template>
             </accessories>
         </div>
@@ -40,7 +62,10 @@
 
 <script>
 import { Tab } from '@enso-ui/tabs/bulma';
-import { Accessories, Addresses } from '@enso-ui/bulma';
+import Accessories from '@enso-ui/accessories';
+import { Addresses } from '@enso-ui/addresses';
+import { Comments } from '@enso-ui/comments';
+import { Documents } from '@enso-ui/documents';
 import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
 import People from './components/People.vue';
 
@@ -53,6 +78,8 @@ export default {
         Accessories,
         Tab,
         Addresses,
+        Comments,
+        Documents,
         People,
     },
 

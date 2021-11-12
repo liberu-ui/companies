@@ -2,7 +2,7 @@
     <enso-table class="box is-paddingless raises-on-hover"
         id="companies"
         @clicked="visit">
-        <template v-slot:status="{ column, row }">
+        <template #:status="{ column, row }">
             <span class="tag is-table-tag"
                 :class="status(column, row)">
                 {{ column.enum._get(row.status) }}
