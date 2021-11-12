@@ -32,28 +32,6 @@
                             </div>
                         </div>
                     </tab>
-                    <tab keep-alive
-                        id="Comments">
-                        <div class="columns is-centered">
-                            <div class="column is-two-thirds">
-                                <comments :id="companyId"
-                                    type="company"
-                                    @update="$set(count, 'Comments', $refs.comments.count)"
-                                    ref="comments"/>
-                            </div>
-                        </div>
-                    </tab>
-                    <tab keep-alive
-                        id="Documents">
-                        <div class="columns is-centered">
-                            <div class="column is-two-thirds">
-                                <documents :id="companyId"
-                                    type="company"
-                                    @update="$set(count, 'Documents', $refs.documents.count)"
-                                    ref="documents"/>
-                            </div>
-                        </div>
-                    </tab>
                 </template>
             </accessories>
         </div>
@@ -64,8 +42,6 @@
 import { Tab } from '@enso-ui/tabs/bulma';
 import Accessories from '@enso-ui/accessories';
 import { Addresses } from '@enso-ui/addresses';
-import { Comments } from '@enso-ui/comments';
-import { Documents } from '@enso-ui/documents';
 import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
 import People from './components/People.vue';
 
@@ -78,8 +54,6 @@ export default {
         Accessories,
         Tab,
         Addresses,
-        Comments,
-        Documents,
         People,
     },
 
