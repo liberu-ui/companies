@@ -1,12 +1,10 @@
 <template>
-    <modal portal="person-form"
-        v-on="$listeners">
+    <modal portal="person-form">
         <enso-form class="box has-background-light"
             v-bind="$attrs"
             disable-state
-            v-on="$listeners"
             @ready="init">
-            <template #:actions-left
+            <template #actions-left
                 v-if="id">
                 <a class="button is-warning"
                     @click="$emit('edit-person', id)">
