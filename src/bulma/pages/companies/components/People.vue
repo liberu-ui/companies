@@ -99,6 +99,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from '@enso-ui/modal/bulma';
@@ -110,9 +111,11 @@ library.add(faPlus, faSync, faSearch);
 export default {
     name: 'People',
 
-    inject: ['canAccess', 'errorHandler', 'i18n', 'route', 'routerErrorHandler', 'toastr'],
+    components: {
+        Fa, Person, PersonForm, Modal,
+    },
 
-    components: { Person, PersonForm, Modal },
+    inject: ['canAccess', 'errorHandler', 'i18n', 'route', 'routerErrorHandler', 'toastr'],
 
     props: {
         id: {

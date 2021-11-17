@@ -22,13 +22,18 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from '@enso-ui/modal/bulma';
 import { EnsoForm } from '@enso-ui/forms/bulma';
+
+library.add(faUserTie);
 
 export default {
     name: 'PersonForm',
 
-    components: { Modal, EnsoForm },
+    components: { Fa, Modal, EnsoForm },
 
     inject: ['i18n'],
 
