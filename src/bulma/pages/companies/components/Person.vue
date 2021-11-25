@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import { VTooltip } from 'v-tooltip';
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -46,8 +45,6 @@ library.add([
 
 export default {
     name: 'Person',
-
-    directives: { tooltip: VTooltip },
 
     components: { Fa },
 
