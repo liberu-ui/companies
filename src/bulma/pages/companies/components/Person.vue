@@ -57,6 +57,8 @@ export default {
         },
     },
 
+    emits: ['delete', 'edit'],
+
     data: () => ({
         controls: false,
     }),

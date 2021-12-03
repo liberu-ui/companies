@@ -128,6 +128,8 @@ export default {
         },
     },
 
+    emits: ['remove', 'update'],
+
     data: () => ({
         loading: false,
         people: [],
