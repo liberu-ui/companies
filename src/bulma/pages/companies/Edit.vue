@@ -15,7 +15,7 @@
                         <div class="columns is-centered">
                             <div class="column is-two-thirds">
                                 <people :id="companyId"
-                                    @update="$set(count, 'People', $refs.people.count)"
+                                    @update="count.People = $refs.people.count"
                                     @remove="personRemoved"
                                     ref="people"/>
                             </div>
@@ -27,7 +27,7 @@
                             <div class="column is-two-thirds">
                                 <addresses :id="companyId"
                                     type="company"
-                                    @update="$set(count, 'Addresses', $refs.addresses.count)"
+                                    @update="count.Addresses = $refs.addresses.count"
                                     ref="addresses"/>
                             </div>
                         </div>
