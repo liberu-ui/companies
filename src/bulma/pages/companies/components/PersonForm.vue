@@ -1,5 +1,5 @@
 <template>
-    <modal portal="person-form">
+    <modal class="person-modal">
         <enso-form class="box has-background-light"
             v-bind="$attrs"
             disable-state
@@ -60,13 +60,15 @@ export default {
 </script>
 
 <style lang="scss">
-    .person-form .modal-content {
+.person-modal {
+    .modal-content {
         overflow: unset;
     }
 
     @media screen and (max-width: 1023px) {
-        .person-form .modal-content {
+        .modal-content {
             width: 95%;
         }
     }
+}
 </style>
