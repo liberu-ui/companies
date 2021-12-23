@@ -115,7 +115,10 @@ export default {
         Fa, Person, PersonForm, Modal,
     },
 
-    inject: ['canAccess', 'errorHandler', 'i18n', 'route', 'routerErrorHandler', 'toastr'],
+    inject: [
+        'canAccess', 'errorHandler', 'i18n', 'http', 'route',
+        'routerErrorHandler', 'toastr'
+    ],
 
     props: {
         id: {
@@ -166,7 +169,7 @@ export default {
         fetch() {
             this.loading = true;
 
-            axios.get(this.route(
+            this.http.get(this.route(
                 'administration.companies.people.index',
                 { company: this.id },
             )).then(({ data }) => {
@@ -190,7 +193,7 @@ export default {
         destroy() {
             this.loading = true;
 
-            return axios.delete(this.route(
+            return this.http.delete(this.route(
                 'administration.companies.people.destroy',
                 { company: this.id, person: this.removedPerson.id },
             )).then(() => {
@@ -204,7 +207,7 @@ export default {
         destroyPerson() {
             this.loading = true;
 
-            return axios.delete(
+            return this.http.delete(
                 this.route('administration.people.destroy', { person: this.removedPerson.id }),
             ).then(({ data: { message } }) => this.toastr.success(message))
                 .catch(this.errorHandler)
