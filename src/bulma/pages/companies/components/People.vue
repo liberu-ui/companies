@@ -46,7 +46,7 @@
         </div>
         <div class="columns is-multiline mt-3">
             <div class="column is-half-tablet"
-                v-for="(person, index) in filteredPeople"
+                v-for="person in filteredPeople"
                 :key="person.id">
                 <person :id="id"
                     :person="person"
@@ -117,7 +117,7 @@ export default {
 
     inject: [
         'canAccess', 'errorHandler', 'i18n', 'http', 'route',
-        'routerErrorHandler', 'toastr'
+        'routerErrorHandler', 'toastr',
     ],
 
     props: {
