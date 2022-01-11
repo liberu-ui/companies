@@ -46,7 +46,7 @@
         </div>
         <div class="columns is-multiline mt-3">
             <div class="column is-half-tablet"
-                v-for="(person, index) in filteredPeople"
+                v-for="person in filteredPeople"
                 :key="person.id">
                 <person :id="id"
                     :person="person"
@@ -99,6 +99,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from '@enso-ui/modal/bulma';
@@ -110,9 +111,14 @@ library.add(faPlus, faSync, faSearch);
 export default {
     name: 'People',
 
-    inject: ['canAccess', 'errorHandler', 'i18n', 'route', 'routerErrorHandler', 'toastr'],
+    components: {
+        Fa, Person, PersonForm, Modal,
+    },
 
-    components: { Person, PersonForm, Modal },
+    inject: [
+        'canAccess', 'errorHandler', 'i18n', 'http', 'route',
+        'routerErrorHandler', 'toastr',
+    ],
 
     props: {
         id: {
@@ -124,6 +130,8 @@ export default {
             default: '',
         },
     },
+
+    emits: ['remove', 'update'],
 
     data: () => ({
         loading: false,
@@ -161,7 +169,7 @@ export default {
         fetch() {
             this.loading = true;
 
-            axios.get(this.route(
+            this.http.get(this.route(
                 'administration.companies.people.index',
                 { company: this.id },
             )).then(({ data }) => {
@@ -185,7 +193,7 @@ export default {
         destroy() {
             this.loading = true;
 
-            return axios.delete(this.route(
+            return this.http.delete(this.route(
                 'administration.companies.people.destroy',
                 { company: this.id, person: this.removedPerson.id },
             )).then(() => {
@@ -199,7 +207,7 @@ export default {
         destroyPerson() {
             this.loading = true;
 
-            return axios.delete(
+            return this.http.delete(
                 this.route('administration.people.destroy', { person: this.removedPerson.id }),
             ).then(({ data: { message } }) => this.toastr.success(message))
                 .catch(this.errorHandler)

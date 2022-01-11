@@ -2,13 +2,13 @@
     <card collapsible
         :collapsed="collapsed">
         <card-header class="has-background-light">
-            <template v-slot:title>
+            <template #title>
                 <span class="icon is-small mr-1">
                     <fa icon="address-card"/>
                 </span>
                 {{ displayTitle }}
             </template>
-            <template v-slot:controls>
+            <template #controls>
                 <card-refresh @refresh="fetch"/>
                 <card-badge :label="count"/>
                 <card-collapse/>
@@ -25,6 +25,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faAddressCard, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -38,7 +39,14 @@ export default {
     name: 'PeopleCard',
 
     components: {
-        Card, CardHeader, CardRefresh, CardCollapse, CardBadge, CardContent, People,
+        Fa,
+        Card,
+        CardHeader,
+        CardRefresh,
+        CardCollapse,
+        CardBadge,
+        CardContent,
+        People,
     },
 
     inject: ['i18n'],

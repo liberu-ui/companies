@@ -1,12 +1,10 @@
 <template>
-    <modal portal="person-form"
-        v-on="$listeners">
+    <modal class="person-modal">
         <enso-form class="box has-background-light"
             v-bind="$attrs"
             disable-state
-            v-on="$listeners"
             @ready="init">
-            <template v-slot:actions-left
+            <template #actions-left
                 v-if="id">
                 <a class="button is-warning"
                     @click="$emit('edit-person', id)">
@@ -24,13 +22,18 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from '@enso-ui/modal/bulma';
 import { EnsoForm } from '@enso-ui/forms/bulma';
+
+library.add(faUserTie);
 
 export default {
     name: 'PersonForm',
 
-    components: { Modal, EnsoForm },
+    components: { Fa, Modal, EnsoForm },
 
     inject: ['i18n'],
 
@@ -40,6 +43,8 @@ export default {
             required: true,
         },
     },
+
+    emits: ['edit-person'],
 
     data: () => ({
         id: null,
@@ -55,13 +60,15 @@ export default {
 </script>
 
 <style lang="scss">
-    .person-form .modal-content {
+.person-modal {
+    .modal-content {
         overflow: unset;
     }
 
     @media screen and (max-width: 1023px) {
-        .person-form .modal-content {
+        .modal-content {
             width: 95%;
         }
     }
+}
 </style>

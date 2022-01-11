@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { VTooltip } from 'v-tooltip';
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faCheck, faTimes, faEnvelope, faPhone, faInfoCircle, faPencilAlt, faTrashAlt,
@@ -46,9 +46,9 @@ library.add([
 export default {
     name: 'Person',
 
-    inject: ['canAccess'],
+    components: { Fa },
 
-    directives: { tooltip: VTooltip },
+    inject: ['canAccess'],
 
     props: {
         person: {
@@ -56,6 +56,8 @@ export default {
             required: true,
         },
     },
+
+    emits: ['delete', 'edit'],
 
     data: () => ({
         controls: false,

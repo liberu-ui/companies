@@ -3,19 +3,19 @@
         <div class="column is-three-quarters is-full-touch">
             <enso-form class="box has-background-light raises-on-hover"
                 ref="form">
-                <template v-slot:mandatary="props">
+                <template #mandatary="props">
                     <form-field v-bind="props"
                         :pivot-params="pivotParams"/>
                 </template>
             </enso-form>
             <accessories>
-                <template v-slot="{ count }">
+                <template #default="{ count }">
                     <tab keep-alive
                         id="People">
                         <div class="columns is-centered">
                             <div class="column is-two-thirds">
                                 <people :id="companyId"
-                                    @update="$set(count, 'People', $refs.people.count)"
+                                    @update="count.People = $refs.people.count"
                                     @remove="personRemoved"
                                     ref="people"/>
                             </div>
@@ -27,7 +27,7 @@
                             <div class="column is-two-thirds">
                                 <addresses :id="companyId"
                                     type="company"
-                                    @update="$set(count, 'Addresses', $refs.addresses.count)"
+                                    @update="count.Addresses = $refs.addresses.count"
                                     ref="addresses"/>
                             </div>
                         </div>
@@ -40,7 +40,8 @@
 
 <script>
 import { Tab } from '@enso-ui/tabs/bulma';
-import { Accessories, Addresses } from '@enso-ui/bulma';
+import Accessories from '@enso-ui/accessories/bulma';
+import { Addresses } from '@enso-ui/addresses/bulma';
 import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
 import People from './components/People.vue';
 
