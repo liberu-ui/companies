@@ -1,6 +1,6 @@
 {
   "name": "@enso-ui/companies",
-  "version": "4.0.16",
+  "version": "5.0.0",
   "description": "Basic companies package",
   "main": "src/bulma/pages/companies/Index.vue",
   "scripts": {
