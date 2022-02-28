@@ -22,7 +22,7 @@
   "homepage": "https://github.com/enso-ui/companies#readme",
   "dependencies": {
     "@enso-ui/accessories": "^4.0",
-    "@enso-ui/addresses": "^2.0",
+    "@enso-ui/addresses": "^3.0",
     "@enso-ui/card": "^3.0",
     "@enso-ui/confirmation": "^2.0",
     "@enso-ui/forms": "^3.0",
