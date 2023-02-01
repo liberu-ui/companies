@@ -10,7 +10,8 @@
                 <template #actions-left>
                     <action tag="a"
                         :button="person"
-                        @click="$router.push({ name: 'administration.people.create' })"
+                        @click="$router.push({ name: 'administration.people.create' })
+                            .catch(this.routerErrorHandler)"
                         v-if="canAccess('administration.people.create')"/>
                 </template>
             </enso-form>
@@ -78,8 +79,6 @@ import { Documents } from '@enso-ui/documents/bulma';
 export default {
     name: 'Edit',
 
-    inject: ['canAccess'],
-
     components: {
         Action,
         EnsoForm,
@@ -91,6 +90,8 @@ export default {
         Comments,
         Documents,
     },
+
+    inject: ['canAccess', 'routerErrorHandler'],
 
     data: () => ({
         person: {
