@@ -7,6 +7,12 @@
                     <form-field v-bind="props"
                         :pivot-params="pivotParams"/>
                 </template>
+                <template #actions-left>
+                    <action tag="a"
+                        :button="person"
+                        @click="$router.push({ name: 'administration.people.create' })"
+                        v-if="canAccess('administration.people.create')"/>
+                </template>
             </enso-form>
             <accessories>
                 <template #default="{ count }">
@@ -32,6 +38,28 @@
                             </div>
                         </div>
                     </tab>
+                    <tab keep-alive
+                        id="Comments">
+                        <div class="columns is-centered">
+                            <div class="column is-two-thirds">
+                                <comments :id="companyId"
+                                    type="company"
+                                    @update="count.Comments = $refs.comments.count"
+                                    ref="comments"/>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab keep-alive
+                        id="Documents">
+                        <div class="columns is-centered">
+                            <div class="column is-two-thirds">
+                                <documents :id="companyId"
+                                    type="company"
+                                    @update="count.Documents = $refs.documents.count"
+                                    ref="documents"/>
+                            </div>
+                        </div>
+                    </tab>
                 </template>
             </accessories>
         </div>
@@ -42,20 +70,35 @@
 import { Tab } from '@enso-ui/tabs/bulma';
 import Accessories from '@enso-ui/accessories/bulma';
 import { Addresses } from '@enso-ui/addresses/bulma';
-import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
+import { EnsoForm, FormField, Action } from '@enso-ui/forms/bulma';
 import People from './components/People.vue';
+import { Comments } from '@enso-ui/comments/bulma';
+import { Documents } from '@enso-ui/documents/bulma';
 
 export default {
     name: 'Edit',
 
+    inject: ['canAccess'],
+
     components: {
+        Action,
         EnsoForm,
         FormField,
         Accessories,
         Tab,
         Addresses,
         People,
+        Comments,
+        Documents,
     },
+
+    data: () => ({
+        person: {
+            class: 'is-warning',
+            icon: 'user-tie',
+            label: 'Person',
+        },
+    }),
 
     computed: {
         companyId() {
