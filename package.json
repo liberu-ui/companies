@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/enso-ui/companies.git"
+    "url": "git+https://github.com/liberu-ui/companies.git"
   },
   "keywords": [
     "companies",
@@ -17,9 +17,9 @@
   "author": "Adrian Ocneanu <aocneanu@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/enso-ui/companies/issues"
+    "url": "https://github.com/liberu-ui/companies/issues"
   },
-  "homepage": "https://github.com/enso-ui/companies#readme",
+  "homepage": "https://github.com/liberu-ui/companies#readme",
   "dependencies": {
     "@liberu-ui/accessories": "^4.0",
     "@liberu-ui/addresses": "^3.0",
