@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { EnsoTable } from '@enso-ui/tables/bulma';
+import { EnsoTable } from '@liberu-ui/tables/bulma';
 
 export default {
     mame: 'Index',

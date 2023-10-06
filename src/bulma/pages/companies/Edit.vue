@@ -39,10 +39,10 @@
 </template>
 
 <script>
-import { Tab } from '@enso-ui/tabs/bulma';
-import Accessories from '@enso-ui/accessories/bulma';
-import { Addresses } from '@enso-ui/addresses/bulma';
-import { EnsoForm, FormField } from '@enso-ui/forms/bulma';
+import { Tab } from '@liberu-ui/tabs/bulma';
+import Accessories from '@liberu-ui/accessories/bulma';
+import { Addresses } from '@liberu-ui/addresses/bulma';
+import { EnsoForm, FormField } from '@liberu-ui/forms/bulma';
 import People from './components/People.vue';
 
 export default {
